@@ -6,11 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./timer.component.scss'],
 })
 export class TimerComponent implements OnInit {
-  timer: Date = new Date();
+  targetTime: number = 1500000;
 
-  constructor() {
-    this.timer.setHours(0, 25, 0);
-  }
+  constructor() {}
 
   ngOnInit(): void {}
+
+  startTimer() {
+    let second: number = 1000;
+
+    let interval = setInterval(() => {
+      this.targetTime -= 1000;
+      this.targetTime === 1490000 && clearInterval(interval);
+    }, second);
+  }
 }
