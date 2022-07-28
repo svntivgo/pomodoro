@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TimeInterval } from 'rxjs';
 
 @Component({
   selector: 'app-timer',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TimerComponent implements OnInit {
   targetTime: number = 1500000;
+  interval: any;
 
   constructor() {}
 
@@ -15,9 +17,13 @@ export class TimerComponent implements OnInit {
   startTimer() {
     let second: number = 1000;
 
-    let interval = setInterval(() => {
+    this.interval = setInterval(() => {
       this.targetTime -= 1000;
-      this.targetTime === 1490000 && clearInterval(interval);
+      this.targetTime === 1490000 && clearInterval(this.interval);
     }, second);
+  }
+
+  stopTimer() {
+    clearInterval(this.interval);
   }
 }
