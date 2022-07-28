@@ -1,4 +1,4 @@
-<p>{{ targetTime | date: "mm:ss" }}</p>
+<p>{{ time | date: "mm:ss" }}</p>
+<p>{{ seriesCounter | number }} / {{ settings.series | number }}</p>
 <button (click)="startTimer()">Start</button>
 <button (click)="stopTimer()">Stop</button>
-

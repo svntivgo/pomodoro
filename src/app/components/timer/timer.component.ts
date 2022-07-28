@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TimeInterval } from 'rxjs';
 
 @Component({
   selector: 'app-timer',
@@ -7,7 +6,13 @@ import { TimeInterval } from 'rxjs';
   styleUrls: ['./timer.component.scss'],
 })
 export class TimerComponent implements OnInit {
-  targetTime: number = 1500000;
+  settings: any = {
+    duration: 1500000,
+    series: 4,
+  };
+
+  time: number = this.settings.duration;
+  seriesCounter: number = 0;
   interval: any;
 
   constructor() {}
@@ -15,15 +20,20 @@ export class TimerComponent implements OnInit {
   ngOnInit(): void {}
 
   startTimer() {
-    let second: number = 1000;
-
     this.interval = setInterval(() => {
-      this.targetTime -= 1000;
-      this.targetTime === 1490000 && clearInterval(this.interval);
-    }, second);
+      this.time -= 1000;
+      this.time === 1497000 && this.completeSerie();
+      this.seriesCounter === this.settings.series && alert('Pomodoro terminado')
+    }, 1000);
   }
 
   stopTimer() {
     clearInterval(this.interval);
+  }
+
+  completeSerie() {
+    clearInterval(this.interval);
+    this.seriesCounter++;
+    this.time = this.settings.duration;
   }
 }
