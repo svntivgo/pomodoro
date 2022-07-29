@@ -10,6 +10,8 @@ import { interval, Subscription } from 'rxjs';
 export class TimerComponent implements OnInit {
   settings: any = {
     duration: 1500000,
+    rest: 5000,
+    longRest: 10000,
     series: 4,
   };
 
@@ -23,6 +25,7 @@ export class TimerComponent implements OnInit {
 
   time: number = this.settings.duration;
   isRunning: boolean = false;
+  isResting: boolean = false;
   seriesCounter: number = 0;
   interval: Subscription = interval().subscribe();
   task: string = '';
@@ -34,6 +37,7 @@ export class TimerComponent implements OnInit {
   }
 
   startTimer() {
+    this.time = this.settings.duration;
     this.isRunning = true;
     this.interval = interval(1000).subscribe(() => {
       this.time -= 1000;
@@ -58,8 +62,17 @@ export class TimerComponent implements OnInit {
   completeSerie() {
     this.isRunning = false;
     this.interval.unsubscribe();
-    this.seriesCounter++;
-    this.time = this.settings.duration;
+    this.isResting && this.seriesCounter++;
+    this.isResting = !this.isResting;
+  }
+
+  startRest() {
+    this.time = this.settings.rest;
+    this.isRunning = true;
+    this.interval = interval(1000).subscribe(() => {
+      this.time -= 1000;
+      this.time === 0 && this.completeSerie();
+    });
   }
 
   getTask() {
