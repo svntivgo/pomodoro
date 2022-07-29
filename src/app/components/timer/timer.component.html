@@ -19,5 +19,5 @@
 </ng-template>
 <p>{{ time | date: "mm:ss" }}</p>
 <p>{{ seriesCounter | number }} / {{ settings.series | number }}</p>
-<button (click)="startTimer()" [disabled]="!task">Start</button>
-<button (click)="stopTimer()">Stop</button>
+<button (click)="startTimer()" [disabled]="!task || isRunning">Start</button>
+<button (click)="stopTimer()" [disabled]="!isRunning">Stop</button>

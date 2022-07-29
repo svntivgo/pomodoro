@@ -22,6 +22,7 @@ export class TimerComponent implements OnInit {
   });
 
   time: number = this.settings.duration;
+  isRunning: boolean = false;
   seriesCounter: number = 0;
   interval: Subscription = interval().subscribe();
   task: string = '';
@@ -33,6 +34,7 @@ export class TimerComponent implements OnInit {
   }
 
   startTimer() {
+    this.isRunning = true;
     this.interval = interval(1000).subscribe(() => {
       this.time -= 1000;
       this.time === 1497000 && this.completeSerie();
@@ -42,10 +44,12 @@ export class TimerComponent implements OnInit {
   }
 
   stopTimer() {
+    this.isRunning = false;
     this.interval.unsubscribe();
   }
 
   completeSerie() {
+    this.isRunning = false;
     this.interval.unsubscribe();
     this.seriesCounter++;
     this.time = this.settings.duration;
