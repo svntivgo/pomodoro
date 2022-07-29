@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {
-  interval,
-  observable,
-  Observable,
-  subscribeOn,
-  Subscription,
-  TimeInterval,
-} from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-timer',

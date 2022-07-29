@@ -1,5 +1,5 @@
 <form [formGroup]="form" *ngIf="!task; else outlet">
-  <label for="task">Task name</label>
+  <label for="task">Task name:</label>
   <input type="text" id="task" name="task" formControlName="task" />
   <div
     *ngIf="
