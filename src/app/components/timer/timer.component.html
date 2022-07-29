@@ -1,3 +1,19 @@
+<form [formGroup]="form">
+  <label for="task">Task name</label>
+  <input type="text" id="task" name="task" formControlName="task" />
+  <div
+    *ngIf="
+      form.controls['task'].invalid &&
+      (form.controls['task'].dirty || form.controls['task'].touched)
+    "
+    class="alert"
+  >
+    <span *ngIf="form.controls['task'].errors">
+      Please enter a valid name
+    </span>
+  </div>
+  <button type="submit">Enviar</button>
+</form>
 <p>{{ time | date: "mm:ss" }}</p>
 <p>{{ seriesCounter | number }} / {{ settings.series | number }}</p>
 <button (click)="startTimer()">Start</button>
