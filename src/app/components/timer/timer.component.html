@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form [formGroup]="form" *ngIf="!task; else outlet">
   <label for="task">Task name</label>
   <input type="text" id="task" name="task" formControlName="task" />
   <div
@@ -12,9 +12,12 @@
       Please enter a valid name
     </span>
   </div>
-  <button type="submit">Enviar</button>
+  <button type="submit" (click)="getTask()" [disabled]="task">Enviar</button>
 </form>
+<ng-template #outlet>
+  <p>{{task}}</p>
+</ng-template>
 <p>{{ time | date: "mm:ss" }}</p>
 <p>{{ seriesCounter | number }} / {{ settings.series | number }}</p>
-<button (click)="startTimer()">Start</button>
+<button (click)="startTimer()" [disabled]="!task">Start</button>
 <button (click)="stopTimer()">Stop</button>

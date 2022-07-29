@@ -35,10 +35,6 @@ export class TimerComponent implements OnInit {
     this.getTask();
   }
 
-  getTask() {
-    this.form.get('task')?.valueChanges.subscribe((task) => (this.task = task));
-  }
-
   startTimer() {
     this.interval = setInterval(() => {
       this.time -= 1000;
@@ -56,5 +52,10 @@ export class TimerComponent implements OnInit {
     clearInterval(this.interval);
     this.seriesCounter++;
     this.time = this.settings.duration;
+  }
+
+  getTask() {
+    this.task = this.form.get('task')?.value;
+    console.log(this.task)
   }
 }
