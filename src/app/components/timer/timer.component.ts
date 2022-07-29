@@ -57,7 +57,7 @@ export class TimerComponent implements OnInit {
     this.interval.unsubscribe();
     this.time = this.settings.duration;
     this.seriesCounter = 0;
-    this.task = ''
+    this.task = '';
   }
 
   completeSerie() {
