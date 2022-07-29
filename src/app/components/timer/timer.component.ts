@@ -15,13 +15,7 @@ export class TimerComponent implements OnInit {
     series: 4,
   };
 
-  form: FormGroup = new FormGroup({
-    task: new FormControl('', [
-      Validators.required,
-      Validators.minLength(2),
-      Validators.maxLength(5),
-    ]),
-  });
+  form: FormGroup = new FormGroup([]);
 
   time: number = this.settings.duration;
   isRunning: boolean = false;
@@ -30,11 +24,17 @@ export class TimerComponent implements OnInit {
   interval: Subscription = interval().subscribe();
   task: string = '';
 
-  constructor() {}
-
-  ngOnInit(): void {
-    this.getTask();
+  constructor() {
+    this.form = new FormGroup({
+      task: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(5),
+      ]),
+    });
   }
+
+  ngOnInit(): void {}
 
   startTimer() {
     this.time = this.settings.duration;
