@@ -48,6 +48,13 @@ export class TimerComponent implements OnInit {
     this.interval.unsubscribe();
   }
 
+  resetTimer() {
+    this.isRunning = false;
+    this.interval.unsubscribe();
+    this.time = this.settings.duration;
+    this.seriesCounter = 0;
+  }
+
   completeSerie() {
     this.isRunning = false;
     this.interval.unsubscribe();
@@ -57,6 +64,5 @@ export class TimerComponent implements OnInit {
 
   getTask() {
     this.task = this.form.get('task')?.value;
-    console.log(this.task);
   }
 }
