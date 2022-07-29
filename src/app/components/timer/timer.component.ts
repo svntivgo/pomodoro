@@ -62,6 +62,8 @@ export class TimerComponent implements OnInit {
   completeSerie() {
     this.isRunning = false;
     this.interval.unsubscribe();
+    if (this.isResting) this.time = this.settings.duration;
+    if (!this.isResting) this.time = this.settings.rest;
     this.isResting && this.seriesCounter++;
     this.isResting = !this.isResting;
   }

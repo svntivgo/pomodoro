@@ -21,4 +21,5 @@
 <p>{{ seriesCounter | number }} / {{ settings.series | number }}</p>
 <button (click)="isResting ? startRest() : startTimer()" [disabled]="!task || isRunning || seriesCounter === settings.series">Start</button>
 <button (click)="stopTimer()" [disabled]="!isRunning">Stop</button>
+<button (click)="completeSerie()" [disabled]="!task || seriesCounter === settings.series">Next</button>
 <button (click)="resetTimer()" [disabled]="time === settings.duration && seriesCounter === 0">Reset</button>
