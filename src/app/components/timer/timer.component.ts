@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+  interval,
+  observable,
+  Observable,
+  subscribeOn,
+  Subscription,
+  TimeInterval,
+} from 'rxjs';
 
 @Component({
   selector: 'app-timer',
@@ -26,7 +30,7 @@ export class TimerComponent implements OnInit {
 
   time: number = this.settings.duration;
   seriesCounter: number = 0;
-  interval: any;
+  interval: Subscription = interval().subscribe();
   task: string = '';
 
   constructor() {}
@@ -36,26 +40,26 @@ export class TimerComponent implements OnInit {
   }
 
   startTimer() {
-    this.interval = setInterval(() => {
+    this.interval = interval(1000).subscribe(() => {
       this.time -= 1000;
       this.time === 1497000 && this.completeSerie();
       this.seriesCounter === this.settings.series &&
         alert('Pomodoro terminado');
-    }, 1000);
+    });
   }
 
   stopTimer() {
-    clearInterval(this.interval);
+    this.interval.unsubscribe();
   }
 
   completeSerie() {
-    clearInterval(this.interval);
+    this.interval.unsubscribe();
     this.seriesCounter++;
     this.time = this.settings.duration;
   }
 
   getTask() {
     this.task = this.form.get('task')?.value;
-    console.log(this.task)
+    console.log(this.task);
   }
 }
