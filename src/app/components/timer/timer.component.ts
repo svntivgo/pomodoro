@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { interval, Subscription } from 'rxjs';
-import { ISettings } from 'src/app/interfaces/isettings.interface';
+import { ISettings } from 'src/app/interfaces/ISettings.interface';
 
 @Component({
   selector: 'app-timer',

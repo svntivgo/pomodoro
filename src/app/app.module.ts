@@ -5,11 +5,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TimerComponent } from './components/timer/timer.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TimerComponent
+    NavbarComponent,
+    TimerComponent,
   ],
   imports: [
     BrowserModule,
