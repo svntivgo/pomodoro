@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ISettings } from 'src/app/interfaces/ISettings.interface';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-settings',
@@ -9,26 +12,30 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class SettingsComponent implements OnInit {
   form: FormGroup = new FormGroup([]);
 
-  constructor() {
-    this.form = new FormGroup({
-      focus: new FormControl('25', [
-        Validators.min(15),
-        Validators.max(55),
-      ]),
-      short: new FormControl('15', [
-        Validators.min(5),
-        Validators.max(30),
-      ]),
-      long: new FormControl('25', [
-        Validators.min(5),
-        Validators.max(55),
-      ]),
-      round: new FormControl('4', [
-        Validators.min(2),
-        Validators.max(8),
-      ]),
-    });
+  focus: number = 25;
+  break: number = 15
+  lBreak: number = 25;
+  rounds: number = 4;
+
+
+  constructor(public dataService: DataService) {
+
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+
+
+  saveData = () => {
+    const data: ISettings = {
+      duration: (this.focus *60 )*1000,
+      rest: (this.break *60 )*1000,
+      longRest: (this.lBreak *60 )*1000,
+      series: this.rounds
+    }
+    this.dataService.saveSettings(data)
+
+  }
+
+
 }

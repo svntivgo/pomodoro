@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Data } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import { ISettings } from 'src/app/interfaces/ISettings.interface';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.scss'],
 })
+
+
+
 export class TimerComponent implements OnInit {
   settings: ISettings = {
     duration: 1500000,
@@ -25,7 +30,7 @@ export class TimerComponent implements OnInit {
   interval: Subscription = interval().subscribe();
   task: string = '';
 
-  constructor() {
+  constructor(public dataService: DataService) {
     this.form = new FormGroup({
       task: new FormControl('', [
         Validators.required,
@@ -33,9 +38,21 @@ export class TimerComponent implements OnInit {
         Validators.maxLength(5),
       ]),
     });
+
+    this.dataService.data && this.saveData(this.dataService.data)
+
+
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+
+  }
+
+  saveData(par: ISettings){
+    console.log(par)
+    this.settings = par
+  }
 
   startTimer() {
     this.time = this.settings.duration;
