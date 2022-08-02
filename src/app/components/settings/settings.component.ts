@@ -11,20 +11,20 @@ export class SettingsComponent implements OnInit {
 
   constructor() {
     this.form = new FormGroup({
-      focus: new FormControl('', [
-        Validators.min(5),
+      focus: new FormControl('25', [
+        Validators.min(15),
         Validators.max(55),
       ]),
-      short: new FormControl('', [
+      short: new FormControl('15', [
         Validators.min(5),
         Validators.max(30),
       ]),
-      long: new FormControl('', [
+      long: new FormControl('25', [
         Validators.min(5),
         Validators.max(55),
       ]),
-      round: new FormControl('', [
-        Validators.min(1),
+      round: new FormControl('4', [
+        Validators.min(2),
         Validators.max(8),
       ]),
     });
