@@ -1,0 +1,55 @@
+<form [formGroup]="form">
+  <label for="focus">Focus Time:</label>
+  <input type="number" id="focus" name="focus" formControlName="focus" />
+  <div
+    *ngIf="
+      form.controls['focus'].invalid &&
+      (form.controls['focus'].dirty || form.controls['focus'].touched)
+    "
+    class="alert"
+  >
+    <span *ngIf="form.controls['focus'].errors">
+      Please enter a number between 5 and 55
+    </span>
+  </div>
+  <label for="short">Short break:</label>
+  <input type="number" id="short" name="short" formControlName="short" />
+  <div
+    *ngIf="
+      form.controls['short'].invalid &&
+      (form.controls['short'].dirty || form.controls['short'].touched)
+    "
+    class="alert"
+  >
+    <span *ngIf="form.controls['short'].errors">
+      Please enter a number between 5 and 30
+    </span>
+  </div>
+  <label for="long">Long break:</label>
+  <input type="number" id="long" name="long" formControlName="long" />
+  <div
+    *ngIf="
+      form.controls['long'].invalid &&
+      (form.controls['long'].dirty || form.controls['long'].touched)
+    "
+    class="alert"
+  >
+    <span *ngIf="form.controls['long'].errors">
+      Please enter a number between 5 and 55
+    </span>
+  </div>
+  <label for="round">Rounds:</label>
+  <input type="number" id="round" name="round" formControlName="round" />
+  <div
+    *ngIf="
+      form.controls['round'].invalid &&
+      (form.controls['round'].dirty || form.controls['round'].touched)
+    "
+    class="alert"
+  >
+    <span *ngIf="form.controls['round'].errors">
+      Please enter a number between 1 and 8
+    </span>
+  </div>
+  <button type="submit" [disabled]="">Guardar</button>
+</form>
