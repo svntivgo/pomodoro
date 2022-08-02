@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { interval, Subscription } from 'rxjs';
+import { ISettings } from 'src/app/interfaces/isettings.interface';
 
 @Component({
   selector: 'app-timer',
@@ -8,7 +9,7 @@ import { interval, Subscription } from 'rxjs';
   styleUrls: ['./timer.component.scss'],
 })
 export class TimerComponent implements OnInit {
-  settings: any = {
+  settings: ISettings = {
     duration: 1500000,
     rest: 5000,
     longRest: 10000,
