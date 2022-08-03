@@ -18,9 +18,9 @@
   <p>{{task}}</p>
 </ng-template>
 <p *ngIf="isRunning">{{ time | date: "mm:ss" }}</p>
-<p *ngIf="!isRunning">{{ settings.duration | date: "mm:ss" }}</p>
-<p>{{ seriesCounter | number }} / {{ settings.series | number }}</p>
-<button (click)="isResting ? startRest() : startTimer()" [disabled]="!task || isRunning || seriesCounter === settings.series">Start</button>
+<p *ngIf="!isRunning">{{ $settings.focus | date: "mm:ss" }}</p>
+<p>{{ seriesCounter | number }} / {{ $settings.rounds | number }}</p>
+<button (click)="isResting ? startRest() : startTimer()" [disabled]="!task || isRunning || seriesCounter === $settings.rounds">Start</button>
 <button (click)="stopTimer()" [disabled]="!isRunning">Stop</button>
-<button (click)="completeSerie()" [disabled]="!task || seriesCounter === settings.series">Next</button>
-<button (click)="resetTimer()" [disabled]="time === settings.duration && seriesCounter === 0">Reset</button>
+<button (click)="completeSerie()" [disabled]="!task || seriesCounter === $settings.rounds">Next</button>
+<button (click)="resetTimer()" [disabled]="time === $settings.focus && seriesCounter === 0">Reset</button>

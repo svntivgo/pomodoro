@@ -1,6 +1,6 @@
 export interface ISettings {
-  duration: number,
-  rest: number,
-  longRest: number,
-  series: number,
+  focus: number,
+  break: number,
+  longBreak: number,
+  rounds: number,
 }

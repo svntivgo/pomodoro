@@ -1,6 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { ISettings } from 'src/app/interfaces/ISettings.interface';
 import { DataService } from 'src/app/services/data.service';
 
@@ -10,32 +8,30 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements OnInit {
-  form: FormGroup = new FormGroup([]);
-
   focus: number = 25;
-  break: number = 15
-  lBreak: number = 25;
+  break: number = 15;
+  longBreak: number = 25;
   rounds: number = 4;
 
+  $settings: ISettings = { focus: 0, break: 0, longBreak: 0, rounds: 0 };
 
   constructor(public dataService: DataService) {
-
+    this.$settings = this.dataService.loadSettings();
+    this.focus = (this.$settings.focus / 60) / 1000;
+    this.break = (this.$settings.break / 60) / 1000;
+    this.longBreak = (this.$settings.longBreak / 60) / 1000;
+    this.rounds = this.$settings.rounds;
   }
 
-  ngOnInit(): void { }
-
-
+  ngOnInit(): void {}
 
   saveData = () => {
     const data: ISettings = {
-      duration: (this.focus *60 )*1000,
-      rest: (this.break *60 )*1000,
-      longRest: (this.lBreak *60 )*1000,
-      series: this.rounds
-    }
-    this.dataService.saveSettings(data)
-
-  }
-
-
+      focus: this.focus * 60 * 1000,
+      break: this.break * 60 * 1000,
+      longBreak: this.longBreak * 60 * 1000,
+      rounds: this.rounds,
+    };
+    this.dataService.saveSettings(data);
+  };
 }

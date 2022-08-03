@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Data } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
@@ -10,25 +10,18 @@ import { DataService } from '../../services/data.service';
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.scss'],
 })
-
-
-
 export class TimerComponent implements OnInit {
-  settings: ISettings = {
-    duration: 1500000,
-    rest: 5000,
-    longRest: 10000,
-    series: 4,
-  };
 
-  form: FormGroup = new FormGroup([]);
+  $settings: ISettings = {focus: 0, break: 0, longBreak: 0, rounds: 0}
 
-  time: number = this.settings.duration;
+  time: number = this.$settings.focus;
   isRunning: boolean = false;
   isResting: boolean = false;
   seriesCounter: number = 0;
   interval: Subscription = interval().subscribe();
   task: string = '';
+
+  form: FormGroup = new FormGroup([]);
 
   constructor(public dataService: DataService) {
     this.form = new FormGroup({
@@ -38,29 +31,24 @@ export class TimerComponent implements OnInit {
         Validators.maxLength(5),
       ]),
     });
-
-    this.dataService.data && this.saveData(this.dataService.data)
-
-
+    this.$settings = this.dataService.loadSettings();
+    console.log(this.$settings)
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-
-  }
-
-  saveData(par: ISettings){
-    console.log(par)
-    this.settings = par
+  saveData(par: ISettings) {
+    console.log(par);
+    this.$settings = par;
   }
 
   startTimer() {
-    this.time = this.settings.duration;
+    this.time = this.$settings.focus;
     this.isRunning = true;
     this.interval = interval(1000).subscribe(() => {
       this.time -= 1000;
       this.time === 1497000 && this.completeSerie();
-      this.seriesCounter === this.settings.series &&
+      this.seriesCounter === this.$settings.rounds &&
         alert('Pomodoro terminado');
     });
   }
@@ -73,7 +61,7 @@ export class TimerComponent implements OnInit {
   resetTimer() {
     this.isRunning = false;
     this.interval.unsubscribe();
-    this.time = this.settings.duration;
+    this.time = this.$settings.focus;
     this.seriesCounter = 0;
     this.task = '';
   }
@@ -81,14 +69,14 @@ export class TimerComponent implements OnInit {
   completeSerie() {
     this.isRunning = false;
     this.interval.unsubscribe();
-    if (this.isResting) this.time = this.settings.duration;
-    if (!this.isResting) this.time = this.settings.rest;
+    if (this.isResting) this.time = this.$settings.focus;
+    if (!this.isResting) this.time = this.$settings.break;
     this.isResting && this.seriesCounter++;
     this.isResting = !this.isResting;
   }
 
   startRest() {
-    this.time = this.settings.rest;
+    this.time = this.$settings.break;
     this.isRunning = true;
     this.interval = interval(1000).subscribe(() => {
       this.time -= 1000;
