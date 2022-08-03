@@ -1,6 +1,7 @@
 .navbar {
-  background-color: #011a30;
-  box-shadow: 0px 2px 4px 3px rgb(1, 26, 48, 0.8);
+  background-color: #061c31;
+  border-bottom: 2px solid #28f0f0;
+  box-shadow: 0px -5px 15px 10px rgb(40, 240, 240, 0.8);
   ul {
     display: flex;
     justify-content: center;
@@ -19,8 +20,8 @@
       transition: 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
 
       &:hover {
-        padding-top: 40px;
-        color: #011a30;
+        padding-top: 35px;
+        color: #061c31;
         background: #28f0f0;
         border-radius: 0px 0px 10px 10px;
       }
