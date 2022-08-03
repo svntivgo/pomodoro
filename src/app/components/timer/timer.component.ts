@@ -4,6 +4,7 @@ import { Data } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import { IRecord } from 'src/app/interfaces/irecord.interface';
 import { ISettings } from 'src/app/interfaces/ISettings.interface';
+import { RecordService } from 'src/app/services/record.service';
 import { SettingsService } from '../../services/settings.service';
 
 @Component({
@@ -25,7 +26,10 @@ export class TimerComponent implements OnInit {
 
   form: FormGroup = new FormGroup([]);
 
-  constructor(public settingsService: SettingsService) {
+  constructor(
+    public settingsService: SettingsService,
+    public recordService: RecordService
+  ) {
     this.form = new FormGroup({
       task: new FormControl('', [
         Validators.required,
@@ -89,13 +93,13 @@ export class TimerComponent implements OnInit {
   saveRecord() {
     this.interval.unsubscribe();
     let totalFocus = this.settings.focus * this.settings.rounds;
-    let totalBreaks = this.settings.break * this.settings.rounds -1;
+    let totalBreaks = this.settings.break * this.settings.rounds - 1;
     let totalLongBreak = this.settings.longBreak;
     this.record = {
       task: this.task,
       date: new Date(),
       timeLapse: totalFocus + totalBreaks + totalLongBreak,
     };
-    console.log(this.record);
+    this.recordService.record(this.record);
   }
 }

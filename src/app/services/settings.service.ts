@@ -13,16 +13,14 @@ export class SettingsService {
     rounds: 1,
   };
 
-  $settings: EventEmitter<string> = new EventEmitter<string>();
-
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   saveSettings(settings: ISettings) {
     localStorage.setItem('userSettings', JSON.stringify(settings));
     this.router.navigate(['']);
   }
 
-  loadSettings() {
+  loadSettings(): ISettings {
     let settings: ISettings = localStorage.getItem('userSettings')
       ? JSON.parse(localStorage.getItem('userSettings')!)
       : this.defaultSettings;
