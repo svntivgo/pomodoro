@@ -1,6 +1,8 @@
+@import '../../styles/variables';
+
 .navbar {
-  background-color: #061c31;
-  border-bottom: 2px solid #28f0f0;
+  background-color: $mainColor;
+  border-bottom: 2px solid $brightColor;
   box-shadow: 0px -5px 15px 10px rgb(40, 240, 240, 0.8);
   ul {
     display: flex;
@@ -12,7 +14,7 @@
       display: inline;
       line-height: 50px;
       padding: 0 10px;
-      color: #e8f6ff;
+      color: $whiteColor;
       font-size: 1.5rem;
       font-weight: 600;
       list-style: none;
@@ -21,8 +23,8 @@
 
       &:hover {
         padding-top: 35px;
-        color: #061c31;
-        background: #28f0f0;
+        color: $mainColor;
+        background: $brightColor;
         border-radius: 0px 0px 10px 10px;
       }
     }

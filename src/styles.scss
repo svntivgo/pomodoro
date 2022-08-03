@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
+@import './app/styles/variables';
 
 * {
   box-sizing: border-box;
@@ -9,7 +10,7 @@
 :root {
   font-family: 'Montserrat', 'Roboto', sans-serif;
   font-size: 10px;
-  background: #061c31;
+  background: $secondaryColor;
 }
 
 h1,
