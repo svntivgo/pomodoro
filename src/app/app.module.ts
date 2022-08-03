@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { TimerComponent } from './components/timer/timer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { RecordsComponent } from './components/records/records.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SettingsComponent } from './components/settings/settings.component';
     NavbarComponent,
     TimerComponent,
     SettingsComponent,
+    RecordsComponent,
   ],
   imports: [
     AppRoutingModule,

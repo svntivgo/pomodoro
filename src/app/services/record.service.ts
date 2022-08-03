@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IRecord } from '../interfaces/irecord.interface';
+import { IRecord } from '../interfaces/Irecord.interface';
 
 @Injectable({
   providedIn: 'root',

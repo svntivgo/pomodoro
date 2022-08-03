@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Data } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
-import { IRecord } from 'src/app/interfaces/irecord.interface';
+import { IRecord } from 'src/app/interfaces/Irecord.interface';
 import { ISettings } from 'src/app/interfaces/ISettings.interface';
 import { RecordService } from 'src/app/services/record.service';
 import { SettingsService } from '../../services/settings.service';
