@@ -8,7 +8,7 @@ import { IRecord } from 'src/app/interfaces/Irecord.interface';
   styleUrls: ['./records.component.scss']
 })
 export class RecordsComponent implements OnInit {
-  records: IRecord[] = [{ task: '', date: new Date(), totalTime: 0 }];
+  records: IRecord[] = [];
 
   constructor(public recordService: RecordService) {
     this.records = this.recordService.loadRecords();
@@ -18,4 +18,11 @@ export class RecordsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  clean(){
+    localStorage.removeItem("userRecords");
+    this.recordService.loadRecords();
+  this.records = [];
+
+  }
 }

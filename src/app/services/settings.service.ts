@@ -8,9 +8,9 @@ import { ISettings } from '../interfaces/ISettings.interface';
 export class SettingsService {
   defaultSettings: ISettings = {
     focus: 1500000,
-    break: 3000,
-    longBreak: 5000,
-    rounds: 1,
+    break: 900000,
+    longBreak: 1500000,
+    rounds: 4,
   };
 
   constructor(private router: Router) {}

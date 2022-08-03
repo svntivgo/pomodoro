@@ -5,7 +5,7 @@ import { IRecord } from '../interfaces/Irecord.interface';
   providedIn: 'root',
 })
 export class RecordService {
-  records: IRecord[] = [{ task: '', date: new Date(), totalTime: 0 }];
+  records: IRecord[] = [];
 
   constructor() {}
 

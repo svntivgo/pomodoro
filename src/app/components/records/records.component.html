@@ -18,8 +18,10 @@
       <tr>
         <td>{{ record.date | date: "dd/MM/YYYY" }}</td>
         <td>{{ record.task | titlecase }}</td>
-        <td>{{ record.timeLapse | date: "mm:ss" }} minutes</td>
+        <td>{{ record.totalTime | date: "mm:ss" }} minutes</td>
       </tr>
     </ng-template>
   </p-table>
+  <span *ngIf="records.length == 0">No hay pomodoros registrados</span>
+  <button (click)="clean()">Limpiar Historial</button>
 </div>
