@@ -34,9 +34,5 @@
     &:hover {
       background-color: $whiteColor;
     }
-    &:disabled {
-      background-color: $whiteColor;
-      text-decoration: line-through;
-    }
   }
 }
