@@ -1,0 +1,42 @@
+@import "../../styles/variables";
+
+.card {
+  margin-top: 30px;
+  h5 {
+    text-align: center;
+    font-size: 4rem;
+    color: $whiteColor;
+  }
+  .p-element {
+    th {
+      padding-top: 40px;
+      text-align: center;
+      font-size: 2rem;
+      color: $whiteColor;
+    }
+    td {
+      padding: 7px 0;
+      text-align: center;
+      font-size: 1.5rem;
+      color: $whiteColor;
+    }
+  }
+
+  button {
+    display: block;
+    margin: auto;
+    color: $mainColor;
+    padding: 7px 15px;
+    background: $brightColor;
+    border: none;
+    margin-top: 40px;
+    transition: 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
+    &:hover {
+      background-color: $whiteColor;
+    }
+    &:disabled {
+      background-color: $whiteColor;
+      text-decoration: line-through;
+    }
+  }
+}
