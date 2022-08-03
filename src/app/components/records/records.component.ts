@@ -8,7 +8,7 @@ import { IRecord } from 'src/app/interfaces/Irecord.interface';
   styleUrls: ['./records.component.scss']
 })
 export class RecordsComponent implements OnInit {
-  records: IRecord[] = [{ task: '', date: new Date(), timeLapse: 0 }];
+  records: IRecord[] = [{ task: '', date: new Date(), totalTime: 0 }];
 
   constructor(public recordService: RecordService) {
     this.records = this.recordService.loadRecords();

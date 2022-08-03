@@ -15,7 +15,7 @@ import { SettingsService } from '../../services/settings.service';
 export class TimerComponent implements OnInit {
   settings: ISettings = { focus: 0, break: 0, longBreak: 0, rounds: 0 };
 
-  record: IRecord = { task: '', date: new Date(), timeLapse: 0 };
+  record: IRecord = { task: '', date: new Date(), totalTime: 0 };
 
   time: number = this.settings.focus;
   isRunning: boolean = false;
@@ -98,8 +98,10 @@ export class TimerComponent implements OnInit {
     this.record = {
       task: this.task,
       date: new Date(),
-      timeLapse: totalFocus + totalBreaks + totalLongBreak,
+      totalTime: totalFocus + totalBreaks + totalLongBreak,
     };
     this.recordService.record(this.record);
+    this.resetTimer();
+    alert('This pomodoro has been saved')
   }
 }
