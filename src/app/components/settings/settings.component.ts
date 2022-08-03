@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ISettings } from 'src/app/interfaces/ISettings.interface';
-import { DataService } from 'src/app/services/data.service';
+import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
   selector: 'app-settings',
@@ -13,14 +13,14 @@ export class SettingsComponent implements OnInit {
   longBreak: number = 25;
   rounds: number = 4;
 
-  $settings: ISettings = { focus: 0, break: 0, longBreak: 0, rounds: 0 };
+  settings: ISettings = { focus: 0, break: 0, longBreak: 0, rounds: 0 };
 
-  constructor(public dataService: DataService) {
-    this.$settings = this.dataService.loadSettings();
-    this.focus = (this.$settings.focus / 60) / 1000;
-    this.break = (this.$settings.break / 60) / 1000;
-    this.longBreak = (this.$settings.longBreak / 60) / 1000;
-    this.rounds = this.$settings.rounds;
+  constructor(public settingsService: SettingsService) {
+    this.settings = this.settingsService.loadSettings();
+    this.focus = (this.settings.focus / 60) / 1000;
+    this.break = (this.settings.break / 60) / 1000;
+    this.longBreak = (this.settings.longBreak / 60) / 1000;
+    this.rounds = this.settings.rounds;
   }
 
   ngOnInit(): void {}
@@ -32,6 +32,6 @@ export class SettingsComponent implements OnInit {
       longBreak: this.longBreak * 60 * 1000,
       rounds: this.rounds,
     };
-    this.dataService.saveSettings(data);
+    this.settingsService.saveSettings(data);
   };
 }

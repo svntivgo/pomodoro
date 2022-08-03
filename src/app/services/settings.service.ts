@@ -5,12 +5,12 @@ import { ISettings } from '../interfaces/ISettings.interface';
 @Injectable({
   providedIn: 'root',
 })
-export class DataService {
+export class SettingsService {
   defaultSettings: ISettings = {
     focus: 1500000,
-    break: 5000,
-    longBreak: 10000,
-    rounds: 4,
+    break: 3000,
+    longBreak: 5000,
+    rounds: 1,
   };
 
   $settings: EventEmitter<string> = new EventEmitter<string>();
