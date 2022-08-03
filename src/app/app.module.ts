@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { KnobModule } from 'primeng/knob'
+import { KnobModule } from 'primeng/knob';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TimerComponent } from './components/timer/timer.component';
@@ -23,9 +25,11 @@ import { RecordsComponent } from './components/records/records.component';
     BrowserModule,
     FormsModule,
     KnobModule,
+    TableModule,
+    ButtonModule,
     ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

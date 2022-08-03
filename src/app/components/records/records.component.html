@@ -1,1 +1,25 @@
-<p>records works!</p>
+<div class="card">
+  <h5>Records</h5>
+  <p-table [value]="records">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="date">
+          Date <p-sortIcon field="date"></p-sortIcon>
+        </th>
+        <th pSortableColumn="task">
+          Task <p-sortIcon field="task"></p-sortIcon>
+        </th>
+        <th pSortableColumn="timelapse">
+          Timelapse <p-sortIcon field="timelapse"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-record>
+      <tr>
+        <td>{{ record.date | date: "dd/MM/YYYY" }}</td>
+        <td>{{ record.task | titlecase }}</td>
+        <td>{{ record.timeLapse | date: "mm:ss" }} minutes</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

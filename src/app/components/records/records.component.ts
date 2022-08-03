@@ -12,6 +12,7 @@ export class RecordsComponent implements OnInit {
 
   constructor(public recordService: RecordService) {
     this.records = this.recordService.loadRecords();
+    console.log(this.records)
    }
 
   ngOnInit(): void {
