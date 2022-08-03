@@ -1,50 +1,58 @@
-<div>
-  <div>
+<div class="dial-container">
+  <div class="dial">
     <label for="focus">Focus Time:</label>
     <p-knob
       [(ngModel)]="focus"
       [min]="15"
       [max]="55"
       [step]="5"
-      valueColor="SlateGray"
-      rangeColor="MediumTurquoise"
+      [size]="180"
+      valueColor="#28f0f0"
+      rangeColor="#f6ffff"
+      textColor="#f6ffff"
     ></p-knob>
   </div>
 
-  <div>
+  <div class="dial">
     <label for="short">Short break:</label>
     <p-knob
       [(ngModel)]="break"
       [min]="5"
       [max]="30"
       [step]="5"
-      valueColor="SlateGray"
-      rangeColor="MediumTurquoise"
+      [size]="180"
+      valueColor="#28f0f0"
+      rangeColor="#f6ffff"
+      textColor="#f6ffff"
     ></p-knob>
   </div>
 
-  <div>
+  <div class="dial">
     <label for="long">Long break:</label>
     <p-knob
       [(ngModel)]="longBreak"
       [min]="5"
       [max]="55"
       [step]="5"
-      valueColor="SlateGray"
-      rangeColor="MediumTurquoise"
+      [size]="180"
+      valueColor="#28f0f0"
+      rangeColor="#f6ffff"
+      textColor="#f6ffff"
     ></p-knob>
   </div>
 
-  <div>
+  <div class="dial">
     <label for="rounds">Rounds:</label>
     <p-knob
       [(ngModel)]="rounds"
       [min]="2"
       [max]="8"
-      valueColor="SlateGray"
-      rangeColor="MediumTurquoise"
+      [size]="180"
+      valueColor="#28f0f0"
+      rangeColor="#f6ffff"
+      textColor="#f6ffff"
     ></p-knob>
   </div>
-
-  <button (click)="saveData()">Guardar</button>
 </div>
+<button (click)="saveData()">Guardar</button>
+
