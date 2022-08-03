@@ -10,7 +10,11 @@ export class RecordService {
   constructor() {}
 
   record(record: IRecord) {
-    localStorage.setItem('userRecords', JSON.stringify(record));
+    let records: any[] = localStorage.getItem('userRecords')
+      ? JSON.parse(localStorage.getItem('userRecords')!)
+      : [];
+    records.unshift(record);
+    localStorage.setItem('userRecords', JSON.stringify(records));
   }
 
   loadRecords(): IRecord[] {

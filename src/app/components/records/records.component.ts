@@ -1,4 +1,6 @@
+import { RecordService } from 'src/app/services/record.service';
 import { Component, OnInit } from '@angular/core';
+import { IRecord } from 'src/app/interfaces/Irecord.interface';
 
 @Component({
   selector: 'app-records',
@@ -6,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./records.component.scss']
 })
 export class RecordsComponent implements OnInit {
+  records: IRecord[] = [{ task: '', date: new Date(), timeLapse: 0 }];
 
-  constructor() { }
+  constructor(public recordService: RecordService) {
+    this.records = this.recordService.loadRecords();
+   }
 
   ngOnInit(): void {
   }
