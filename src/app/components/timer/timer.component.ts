@@ -47,7 +47,7 @@ export class TimerComponent implements OnInit {
     this.isRunning = true;
     this.interval = interval(1000).subscribe(() => {
       this.time -= 1000;
-      this.time === 1497000 && this.completeSerie();
+      this.time === 0 && this.completeSerie();
     });
   }
 
