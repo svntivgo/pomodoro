@@ -17,7 +17,8 @@
 <ng-template #outlet>
   <p>{{task}}</p>
 </ng-template>
-<p>{{ time | date: "mm:ss" }}</p>
+<p *ngIf="isRunning">{{ time | date: "mm:ss" }}</p>
+<p *ngIf="!isRunning">{{ settings.duration | date: "mm:ss" }}</p>
 <p>{{ seriesCounter | number }} / {{ settings.series | number }}</p>
 <button (click)="isResting ? startRest() : startTimer()" [disabled]="!task || isRunning || seriesCounter === settings.series">Start</button>
 <button (click)="stopTimer()" [disabled]="!isRunning">Stop</button>

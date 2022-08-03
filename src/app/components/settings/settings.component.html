@@ -1,55 +1,27 @@
-<form [formGroup]="form">
-  <label for="focus">Focus Time:</label>
-  <input type="number" id="focus" name="focus" formControlName="focus" />
-  <div
-    *ngIf="
-      form.controls['focus'].invalid &&
-      (form.controls['focus'].dirty || form.controls['focus'].touched)
-    "
-    class="alert"
-  >
-    <span *ngIf="form.controls['focus'].errors">
-      Please enter a number between 15 and 55
-    </span>
+<div>
+
+  <div>
+    <label for="focus">Focus Time:</label>
+    <p-knob [(ngModel)]="focus" [min]="15" [max]="55" [step]="5" valueColor="SlateGray" rangeColor="MediumTurquoise"></p-knob>
   </div>
-  <label for="short">Short break:</label>
-  <input type="number" id="short" name="short" formControlName="short" />
-  <div
-    *ngIf="
-      form.controls['short'].invalid &&
-      (form.controls['short'].dirty || form.controls['short'].touched)
-    "
-    class="alert"
-  >
-    <span *ngIf="form.controls['short'].errors">
-      Please enter a number between 5 and 30
-    </span>
+
+  <div>
+    <label for="short">Short break:</label>
+    <p-knob [(ngModel)]="break" [min]="5" [max]="30" [step]="5"  valueColor="SlateGray" rangeColor="MediumTurquoise"></p-knob>
   </div>
-  <label for="long">Long break:</label>
-  <input type="number" id="long" name="long" formControlName="long" />
-  <div
-    *ngIf="
-      form.controls['long'].invalid &&
-      (form.controls['long'].dirty || form.controls['long'].touched)
-    "
-    class="alert"
-  >
-    <span *ngIf="form.controls['long'].errors">
-      Please enter a number between 5 and 55
-    </span>
+
+  <div>
+    <label for="long">Long break:</label>
+    <p-knob [(ngModel)]="lBreak" [min]="5" [max]="55" [step]="5"  valueColor="SlateGray" rangeColor="MediumTurquoise"></p-knob>
   </div>
-  <label for="round">Rounds:</label>
-  <input type="number" id="round" name="round" formControlName="round" />
-  <div
-    *ngIf="
-      form.controls['round'].invalid &&
-      (form.controls['round'].dirty || form.controls['round'].touched)
-    "
-    class="alert"
-  >
-    <span *ngIf="form.controls['round'].errors">
-      Please enter a number between 2 and 8
-    </span>
+
+  <div>
+    <label for="rounds">Rounds:</label>
+    <p-knob [(ngModel)]="rounds" [min]="2" [max]="8"  valueColor="SlateGray" rangeColor="MediumTurquoise"></p-knob>
   </div>
-  <button type="submit" [disabled]="">Guardar</button>
-</form>
+
+  <button (click)="saveData()">Guardar</button>
+</div>
+
+
+
