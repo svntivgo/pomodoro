@@ -15,12 +15,14 @@
   <button type="submit" (click)="getTask()" [disabled]="task">Enviar</button>
 </form>
 <ng-template #outlet>
-  <p>{{task}}</p>
+  <p class="form">{{task}}</p>
 </ng-template>
-<p *ngIf="isRunning">{{ time | date: "mm:ss" }}</p>
-<p *ngIf="!isRunning">{{ settings.focus | date: "mm:ss" }}</p>
+<p class="timer" *ngIf="isRunning">{{ time | date: "mm:ss" }}</p>
+<p class="timer" *ngIf="!isRunning">{{ settings.focus | date: "mm:ss" }}</p>
 <p>{{ roundsCounter | number }} / {{ settings.rounds | number }}</p>
-<button (click)="isResting ? startRest() : startTimer()" [disabled]="!task || isRunning || roundsCounter === settings.rounds+1">Start</button>
-<button (click)="stopTimer()" [disabled]="!isRunning">Stop</button>
-<button (click)="completeSerie()" [disabled]="!task || roundsCounter === settings.rounds">Next</button>
-<button (click)="resetTimer()" [disabled]="time === settings.focus && roundsCounter === 0">Reset</button>
+<div class="timer-buttons">
+  <button (click)="isResting ? startRest() : startTimer()" [disabled]="!task || isRunning || roundsCounter === settings.rounds+1">Start</button>
+  <button (click)="stopTimer()" [disabled]="!isRunning">Stop</button>
+  <button (click)="completeSerie()" [disabled]="!task || roundsCounter === settings.rounds">Next</button>
+  <button (click)="resetTimer()" [disabled]="time === settings.focus && roundsCounter === 0">Reset</button>
+</div>
