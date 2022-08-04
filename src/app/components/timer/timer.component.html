@@ -24,5 +24,5 @@
   <button (click)="isResting ? startRest() : startTimer()" [disabled]="!task || isRunning || roundsCounter === settings.rounds+1">Start</button>
   <button (click)="stopTimer()" [disabled]="!isRunning">Stop</button>
   <button (click)="completeSerie()" [disabled]="!task || roundsCounter === settings.rounds">Next</button>
-  <button (click)="resetTimer()" [disabled]="time === settings.focus && roundsCounter === 0">Reset</button>
+  <button (click)="resetTimer()" [disabled]="time === settings.focus && roundsCounter === 0 || !task">Reset</button>
 </div>
