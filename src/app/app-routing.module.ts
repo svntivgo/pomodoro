@@ -5,9 +5,10 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { TimerComponent } from './components/timer/timer.component';
 
 const routes: Routes = [
-  { path: '', component: TimerComponent },
+  { path: 'timer', component: TimerComponent, },
   { path: 'records', component: RecordsComponent },
   { path: 'settings', component: SettingsComponent },
+  { path: '', redirectTo:"timer", pathMatch:'full' },
 ];
 
 @NgModule({

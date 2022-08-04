@@ -1,16 +1,17 @@
-<div class="card">
-  <h5>Records</h5>
-  <p-table [value]="records">
-    <ng-template pTemplate="header">
-      <tr>
+<div class="compReg">
+  <h5>Registros</h5>
+
+    <p-table [value]="records">
+      <ng-template pTemplate="header">
+        <tr>
         <th pSortableColumn="date">
-          Date <p-sortIcon field="date"></p-sortIcon>
+          Fecha <p-sortIcon field="date"></p-sortIcon>
         </th>
         <th pSortableColumn="task">
-          Task <p-sortIcon field="task"></p-sortIcon>
+          Nombre Tarea <p-sortIcon field="task"></p-sortIcon>
         </th>
         <th pSortableColumn="timelapse">
-          Timelapse <p-sortIcon field="timelapse"></p-sortIcon>
+          Tiempo <p-sortIcon field="timelapse"></p-sortIcon>
         </th>
       </tr>
     </ng-template>

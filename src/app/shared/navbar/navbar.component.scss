@@ -27,6 +27,12 @@
         background: $brightColor;
         border-radius: 0px 0px 10px 10px;
       }
+      &.active {
+        padding-top: 35px;
+        color: $mainColor;
+        background: $brightColor;
+        border-radius: 0px 0px 10px 10px;
+      }
     }
   }
 }

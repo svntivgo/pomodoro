@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Data } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import { IRecord } from 'src/app/interfaces/Irecord.interface';
 import { ISettings } from 'src/app/interfaces/ISettings.interface';
@@ -47,7 +46,7 @@ export class TimerComponent implements OnInit {
     this.isRunning = true;
     this.interval = interval(1000).subscribe(() => {
       this.time -= 1000;
-      this.time === 1497000 && this.completeSerie();
+      this.time === 0 && this.completeSerie();
     });
   }
 
