@@ -84,7 +84,7 @@ fdescribe('TimerComponent', () => {
     expect(component.task).toBe('')
   })
 
-  fit('completeSerie change isRunning to false, unsubscribe the interval, change time depending of isResting, and execute saveRecord if roundsCounter are equals to settings.rounds', () => {
+  it('completeSerie change isRunning to false, unsubscribe the interval, change time depending of isResting, and execute saveRecord if roundsCounter are equals to settings.rounds', () => {
     const spySaveRecord = spyOn(component, 'saveRecord').and.callFake(()=>null);
     spyOn(Subscription.prototype, 'unsubscribe');
     component.isRunning = true;
