@@ -1,5 +1,5 @@
 <form class="form" [formGroup]="form" *ngIf="!task; else outlet">
-  <label for="task">Task name:</label>
+  <label for="task">Nombre de la Tarea:</label>
   <input type="text" id="task" name="task" formControlName="task" autocomplete="none"/>
   <div
     *ngIf="
@@ -9,10 +9,10 @@
     class="alert"
   >
     <span *ngIf="form.controls['task'].errors">
-      Please enter a valid name
+      Por Favor Ingrese un nombre válido
     </span>
   </div>
-  <button type="submit" (click)="getTask()" [disabled]="task">Enviar</button>
+  <button type="submit" (click)="getTask()" [disabled]="task">Aceptar</button>
 </form>
 <ng-template #outlet>
   <p class="form">{{task}}</p>
@@ -21,8 +21,8 @@
 <p class="timer" *ngIf="!isRunning">{{ settings.focus | date: "mm:ss" }}</p>
 <p>{{ roundsCounter | number }} / {{ settings.rounds | number }}</p>
 <div class="timer-buttons">
-  <button (click)="isResting ? startRest() : startTimer()" [disabled]="!task || isRunning || roundsCounter === settings.rounds+1">Start</button>
-  <button (click)="stopTimer()" [disabled]="!isRunning">Stop</button>
-  <button (click)="completeSerie()" [disabled]="!task || roundsCounter === settings.rounds">Next</button>
-  <button (click)="resetTimer()" [disabled]="time === settings.focus && roundsCounter === 0 || !task">Reset</button>
+  <button (click)="isResting ? startRest() : startTimer()" [disabled]="!task || isRunning || roundsCounter === settings.rounds+1">Comenzar</button>
+  <button (click)="stopTimer()" [disabled]="!isRunning">Detener</button>
+  <button (click)="completeSerie()" [disabled]="!task || roundsCounter === settings.rounds">Siguiente</button>
+  <button (click)="resetTimer()" [disabled]="time === settings.focus && roundsCounter === 0 || !task">Reiniciar</button>
 </div>

@@ -1,7 +1,9 @@
 @import "../../styles/variables";
 
-.card {
+.compReg {
+  align-items: center;
   margin-top: 30px;
+
   h5 {
     text-align: center;
     font-size: 4rem;
@@ -9,13 +11,14 @@
   }
   .p-element {
     th {
+      width: 30%;
       padding-top: 40px;
       text-align: center;
       font-size: 2rem;
       color: $whiteColor;
     }
     td {
-      padding: 7px 0;
+       padding: 7px 0;
       text-align: center;
       font-size: 1.5rem;
       color: $whiteColor;
@@ -35,10 +38,17 @@
       background-color: $whiteColor;
     }
   }
+  span{
+    display: block;
+    text-align: center;
+    padding: 50px;
+    font-size: 4rem;
+    color:$whiteColor
+  }
 }
 
 @media screen and (max-width: 960px) {
-  .card {
+  .compReg {
     width: fit-content;
     margin: auto;
     h5 {

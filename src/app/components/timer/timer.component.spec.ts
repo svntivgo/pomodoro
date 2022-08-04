@@ -43,13 +43,16 @@ fdescribe('TimerComponent', () => {
     const spyCompleteSerie = spyOn(component, 'completeSerie').and.callFake(() => null);
 
     expect(component.isRunning).toBeFalsy()
-    expect(component.time).toBe(0)
+    expect(component.time).toBe(0);
+
     component.startTimer();
 
     expect(component.isRunning).toBeTruthy()
 
-    tick(1000)
-    expect(component.time).toBe(1499000)
+    tick(6000)
+    expect(component.time).toBe(1494000);
+    tick(6000)
+    expect(component.time).toBe(1488000)
 
     expect(spyCompleteSerie).not.toHaveBeenCalled();
     component.time = 1000;
