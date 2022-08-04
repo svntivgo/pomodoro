@@ -61,6 +61,7 @@ export class TimerComponent implements OnInit {
     this.time = this.settings.focus;
     this.roundsCounter = 0;
     this.task = '';
+    this.form.reset();
   }
 
   completeSerie() {
@@ -101,6 +102,6 @@ export class TimerComponent implements OnInit {
     };
     this.recordService.record(this.record);
     this.resetTimer();
-    alert('This pomodoro has been saved')
+    alert('This pomodoro has been saved');
   }
 }

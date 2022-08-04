@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+
+.dial-container {
+  margin-top: 60px;
+  .dial {
+    width: fit-content;
+    margin: 30px auto 0 auto;
+    text-align: center;
+    label {
+      font-size: 1.8rem;
+      color: $whiteColor;
+    }
+  }
+}
+
+button {
+  display: block;
+  color: $mainColor;
+  margin: 40px auto;
+  padding: 7px 15px;
+  background: $brightColor;
+  border: none;
+  transition: 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
+  &:hover {
+    background-color: $whiteColor;
+  }
+  &:disabled {
+    background-color: $whiteColor;
+    text-decoration: line-through;
+  }
+}
