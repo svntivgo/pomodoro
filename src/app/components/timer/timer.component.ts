@@ -16,6 +16,8 @@ export class TimerComponent implements OnInit {
 
   record: IRecord = { task: '', date: new Date(), totalTime: 0 };
 
+  sound: HTMLAudioElement = new Audio('../../../assets/alert.mp3');
+
   time: number = this.settings.focus;
   isRunning: boolean = false;
   isResting: boolean = false;
@@ -64,6 +66,7 @@ export class TimerComponent implements OnInit {
   }
 
   completeSerie() {
+    this.sound.play();
     this.isRunning = false;
     this.interval.unsubscribe();
     if (this.isResting) this.time = this.settings.focus;
