@@ -21,8 +21,8 @@
 <p class="timer" *ngIf="!isRunning">{{ time | date: "mm:ss" }}</p>
 <p>{{ roundsCounter | number }} / {{ settings.rounds | number }}</p>
 <div class="timer-buttons">
-  <button (click)="isResting ? startRest() : startTimer()" [disabled]="!task || isRunning || roundsCounter === settings.rounds+1">Comenzar</button>
-  <button (click)="stopTimer()" [disabled]="!isRunning">Detener</button>
+  <button (click)="isResting ? startRest() : startTimer()" [disabled]="!task || isRunning || roundsCounter === settings.rounds+1">Iniciar</button>
+  <button (click)="stopTimer()" [disabled]="!isRunning">Pausar</button>
   <button (click)="completeSerie()" [disabled]="!task || roundsCounter === settings.rounds">Siguiente</button>
-  <button (click)="resetTimer()" [disabled]="time === settings.focus && roundsCounter === 0 || !task">Reiniciar</button>
+  <button (click)="resetTimer()" [disabled]="time === settings.focus && roundsCounter === 0 || !task">Detener</button>
 </div>
