@@ -42,7 +42,6 @@ export class TimerComponent implements OnInit {
   ngOnInit(): void {}
 
   startTimer() {
-    this.time = this.settings.focus;
     this.isRunning = true;
     this.interval = interval(1000).subscribe(() => {
       this.time -= 1000;
@@ -68,17 +67,17 @@ export class TimerComponent implements OnInit {
     this.isRunning = false;
     this.interval.unsubscribe();
     if (this.isResting) this.time = this.settings.focus;
-    if (!this.isResting) this.time = this.settings.break;
+    if (!this.isResting)
+      this.time =
+        this.roundsCounter === this.settings.rounds - 1
+          ? this.settings.longBreak
+          : this.settings.break;
     this.isResting && this.roundsCounter++;
     this.isResting = !this.isResting;
     this.roundsCounter === this.settings.rounds && this.saveRecord();
   }
 
   startRest() {
-    this.time =
-      this.roundsCounter === this.settings.rounds - 1
-        ? this.settings.longBreak
-        : this.settings.break;
     this.isRunning = true;
     this.interval = interval(1000).subscribe(() => {
       this.time -= 1000;
@@ -88,6 +87,7 @@ export class TimerComponent implements OnInit {
 
   getTask() {
     this.task = this.form.get('task')?.value;
+    this.time = this.settings.focus;
   }
 
   saveRecord() {
