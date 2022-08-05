@@ -1,7 +1,6 @@
 @import "../../styles/variables";
 
 .compReg {
-  align-items: center;
   margin-top: 30px;
 
   h5 {
@@ -13,15 +12,18 @@
     th {
       width: 30%;
       padding-top: 40px;
+      padding-bottom: 7px;
       text-align: center;
       font-size: 2rem;
       color: $whiteColor;
     }
     td {
-       padding: 7px 0;
+      padding: 7px 0;
       text-align: center;
       font-size: 1.5rem;
-      color: $whiteColor;
+      color: $mainColor;
+      background: $whiteColor;
+      border-bottom: 2px solid $mainColor;
     }
   }
 
@@ -38,12 +40,12 @@
       background-color: $whiteColor;
     }
   }
-  span{
+  span {
     display: block;
     text-align: center;
-    padding: 50px;
+    padding: 20px;
     font-size: 4rem;
-    color:$whiteColor
+    color: $whiteColor;
   }
 }
 
@@ -60,11 +62,13 @@
       }
       td {
         padding: 7px 15px;
+        span {
+          color: $mainColor;
+          font-size: 2rem;
+          font-weight: 600;
+        }
       }
     }
-    span {
-      margin-right: 30px;
-      font-weight: 600;
-    }
+
   }
 }
